@@ -1,4 +1,3 @@
-
 menu = """
 
 [d] Depositar
@@ -13,13 +12,17 @@ limite = 500
 extrato = ""
 numero_saques = 0
 LIMITE_SAQUES = 3
+valor = 0.0
 
 while True:
 
     opcao = input(menu)
-
     if opcao == "d":
-        valor = float(input("Informe o valor do depósito: "))
+        valorinput = input("Informe o valor do depósito: ")
+        try:
+            valor = float(valorinput)
+        except ValueError:
+            print("Você precisar digitar um valor válido")
 
         if valor > 0:
             saldo += valor
@@ -29,7 +32,11 @@ while True:
             print("Operação falhou! O valor informado é inválido.")
 
     elif opcao == "s":
-        valor = float(input("Informe o valor do saque: "))
+        valorinput = input("Informe o valor do saque: ")
+        try:
+            valor = float(valorinput)
+        except ValueError:
+            print("Você precisar digitar um valor válido")
 
         excedeu_saldo = valor > saldo
 
